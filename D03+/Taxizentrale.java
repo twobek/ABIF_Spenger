@@ -177,25 +177,49 @@ public class Taxizentrale
     public void sortTaxis1()
     {
         Auto save;
-        for(int c = 0; c < taxis.size()-1;c++)
+        Iterator<Auto> it = taxis.iterator();
+        
+        while( it.hasNext() )
         {
-
-            for(int i = 0; i < taxis.size()-1; i++)
-            {
-                Auto car;
-                Auto karre;
-                karre = taxis.get(i);
-                car = taxis.get(i+1);
-                if(karre.getKmStdAlt()> car.getKmStdAlt() )
-                {
-                    save = karre;
-                    taxis.set(i, car);
-                    taxis.set(i+1, save);
-                }
-
-            }
+            
         }
     }
     
+    public void setTaxiBesetzt(int pos, boolean frei)
+    {
+        
+        if(taxis.get(pos).getFrei() == false)
+        {
+            //taxis.get(pos).getFrei() = true;
+           System.out.println("test");
+        }
+        else
+        {
+            System.out.println("wtf setTaxiBesetzt");
+        }
+    }
     
+    public void removeTaxi(int pos)
+    {
+        taxis.remove(pos);
+    }
+    
+    public void removeTaxis(String marke, int baujahr)
+    {
+        Iterator<Auto> it = taxis.iterator();
+        int c = 0;
+        
+        while( it.hasNext() )
+        {
+            Auto auto = it.next();
+            
+            if(auto.getMarke().equals(marke) == true && auto.getBaujahr() > baujahr )
+            {
+                taxis.remove(c);
+            }
+            c++;
+        }
+    }
+    
+   
 }
